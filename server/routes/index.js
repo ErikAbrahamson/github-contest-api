@@ -5,14 +5,23 @@ var submission = new get.Submission();
 
 submission.addEntry('test','test','test');
 
-
-
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('submit', { title: 'Entry Submission' });
+});
+
+router.post('/', function(req, res, next) {
+  submission.addEntry(req.body.name, req.body.url, req.body.image);
+  res.json(submission.entries);
+  console.log(submission);
+  console.log(submission.entries);
 });
 
 router.get('/entries', function(req, res, next) {
-  res.json(submission.entries);
+  res.render('entries', {
+    title: 'Entries',
+    entries: submission.entries
+  });
 });
+
 
 module.exports = router;

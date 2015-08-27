@@ -9,7 +9,26 @@
 
     <h1>{{ title }}</h1>
     <p>Welcome to {{ title }}</p>
-
+    <div class="bs-example" data-example-id="striped-table">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>URL</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in entries %}
+            <tr>
+              <td>{{ entry.githubName }}</td>
+              <td>{{ entry.githubURL }}</td>
+              <td>{{ entry.githubImage }}</td>
+            </tr>
+          {% endfor % }
+        </tbody>
+      </table>
+    </div>
   </div>
 
 {% endblock %}
