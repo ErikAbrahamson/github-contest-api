@@ -13,8 +13,6 @@ Submission.prototype.addEntry = function(githubName, githubURL, githubImage) {
       githubImage: githubImage
     };
     this.entries.push(newEntry);
-  } else {
-    return alert('Sorry, there are already enough entries');
   }
 };
 

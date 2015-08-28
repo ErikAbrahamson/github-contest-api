@@ -10,8 +10,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  submission.addEntry(req.body.name, req.body.url, req.body.image);
-  res.redirect('/entries');
+  if (submission.numEntries < 8) {
+    submission.addEntry(req.body.name, req.body.url, req.body.image);
+    console.log(submission.numEntries);
+    res.redirect('/entries');
+  } else {
+    res.render('submit', { error: 'Already enough Entries'});
+  }
 });
 
 router.get('/entries', function(req, res, next) {
